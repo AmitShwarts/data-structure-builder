@@ -1,4 +1,18 @@
-# DataStructureBuilder
+# Data structures builder
+
+## Description
+
+* Data structure visualization tool: UI for graphic representation of data structures.
+* The goal is to enable **`research`** and **`deepen understanding`** of relationships between data objects and memory management.
+
+
+## Future features ideas:
+1. Save & Load work from a binary file.
+2. Generate memory address allocations.
+3. Improve extracting data from given node when creating new node.
+4. Animate flow of data & actions ( for ADT ): inset, find, delete, sort.
+
+-------------------------------------------------------------------------------------------
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
 
