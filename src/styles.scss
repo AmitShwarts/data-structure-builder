@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Alef');
+@import url('https://fonts.googleapis.com/css?family=Consolas');
+
+$primary-color: #0a85cd;
+$secondary-color: #f6fcfc;
+$gray: #98aaab;
+$menu-bg-color: rgba(8, 58, 64, 0.6);
+$h2-color: #F2C36B;
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+h2 {
+  color: $h2-color;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.35));
+  margin: 20px 0 5px 0;
+  text-decoration: underline;
+}

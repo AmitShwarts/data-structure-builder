@@ -1,0 +1,7 @@
+<div class="btn-area">
+  <button *ngFor="let struct of types"
+          id="{{struct.id}}_struct"
+          (click)="addViewOnClick(struct.id, struct.type)">
+    {{struct.type}}
+  </button>
+</div>

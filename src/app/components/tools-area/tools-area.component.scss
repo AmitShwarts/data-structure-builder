@@ -1,0 +1,26 @@
+@use '../../../styles';
+@use '../../app-component/app.component';
+
+.btn-area {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+button {
+  width: 120px;
+  height: 60px;
+  margin: 5px 4px 10px 4px;
+
+  background-color: styles.$secondary-color;
+  border: 4px transparent solid;
+  border-radius: 10px;
+}
+
+button:hover {
+  cursor: pointer;
+
+  border-color: styles.$primary-color;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+}

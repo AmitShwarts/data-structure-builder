@@ -1,0 +1,14 @@
+<div class="main">
+  <h2>Main Zone</h2>
+  <div class="views-area">
+    <div class="view-node-wrapper"
+         *ngFor="let view of vService.getAll()"
+         cdkDragBoundary=".views-area" cdkDrag
+         [cdkDragFreeDragPosition]="view.position"
+         (cdkDragEnded)="drop(view.viewId, $event.distance)"
+         id="{{view.viewId}}}">
+      <div class="address">0x{{view.address.toString(16)}}</div>
+      <div class="title">{{view.name}}</div>
+    </div>
+  </div>
+</div>

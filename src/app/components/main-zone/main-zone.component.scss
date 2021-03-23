@@ -1,0 +1,46 @@
+@use '../../../styles';
+@use '../../app-component/app.component';
+
+.main {
+  grid-area: main;
+  padding: 5px;
+
+  h2 {
+    width: 120px;
+    position: relative;
+    left: calc((50% - 60px));
+  }
+}
+
+.views-area {
+  height: calc(95vh - #{app.$header-h} - 100px);
+}
+
+.view-node-wrapper {
+  width: 180px;
+  height: 65px;
+
+  position: absolute;
+  cursor: move;
+  user-select: none;
+
+  background-color: styles.$primary-color;
+  border: 1px black solid;
+
+  .address {
+    padding: 2px 0 0 5px;
+
+    color: styles.$secondary-color;;
+    font-size: small;
+    font-family: 'Consolas', serif;
+
+    opacity: 0.6;
+  }
+
+  .title {
+    color: styles.$secondary-color;
+    font-weight: bolder;
+    font-size: x-large;
+    text-align: center;
+  }
+}
