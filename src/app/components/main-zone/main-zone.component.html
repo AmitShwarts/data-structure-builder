@@ -2,12 +2,15 @@
   <h2>Main Zone</h2>
   <div class="views-area">
     <div class="view-node-wrapper"
-         *ngFor="let view of vService.getAll()"
+         *ngFor="let view of viewsArray"
          cdkDragBoundary=".views-area" cdkDrag
          [cdkDragFreeDragPosition]="view.position"
          (cdkDragEnded)="drop(view.viewId, $event.distance)"
          id="{{view.viewId}}}">
-      <div class="address">0x{{view.address.toString(16)}}</div>
+      <div class="view-node-top">
+        <div class="address">0x{{view.address.toString(16)}}</div>
+        <div class="view-node-options-btn" (click)="deleteView(view.viewId)">&#8801;</div>
+      </div>
       <div class="title">{{view.name}}</div>
     </div>
   </div>
