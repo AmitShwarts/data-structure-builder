@@ -11,8 +11,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$data-structure-builder-primary: mat-palette($mat-indigo);
-$data-structure-builder-accent: mat-palette($mat-pink, A200, A100, A400);
+$data-structure-builder-primary: mat-palette($mat-blue, A400);
+$data-structure-builder-accent: mat-palette($mat-gray, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $data-structure-builder-warn: mat-palette($mat-red);
@@ -31,51 +31,3 @@ $data-structure-builder-theme: mat-light-theme((
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($data-structure-builder-theme);
-
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-@import url('https://fonts.googleapis.com/css?family=Alef');
-@import url('https://fonts.googleapis.com/css?family=Consolas');
-
-$primary-color: #0a85cd;
-$secondary-color: #f6fcfc;
-$gray: #98aaab;
-$menu-bg-color: rgba(8, 58, 64, 0.6);
-$h2-color: #F2C36B;
-
-*
-{
-  box-sizing: border-box;
-}
-
-html, body
-{
-  height: 100%;
-}
-
-body
-{
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a
-{
-  color: $primary-color;
-  text-decoration: none;
-}
-
-a:hover
-{
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-h2
-{
-  color: $h2-color;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.35));
-  margin: 20px 0 5px 0;
-  text-decoration: underline;
-}

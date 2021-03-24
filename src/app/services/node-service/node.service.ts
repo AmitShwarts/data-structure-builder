@@ -4,16 +4,19 @@ import { Observable } from 'rxjs';
 import { NodeData } from '../../../assets/types';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
-export class NodeService{
-  private readonly url: string;
+export class NodeService
+{
+    private readonly url: string;
 
-  constructor(private db: HttpClient){
-    this.url = '../assets/nodes.json';
-  }
+    constructor(private db: HttpClient)
+    {
+        this.url = '../assets/nodes.json';
+    }
 
-  getData(): Observable<Array<NodeData>>{
-    return this.db.get<Array<NodeData>>(this.url);
-  }
+    getData(): Observable<Array<NodeData>>
+    {
+        return this.db.get<Array<NodeData>>(this.url);
+    }
 }

@@ -1,20 +1,27 @@
-interface Field{
-  type: string;
-  name: string;
+export interface Field
+{
+    type: string;
+    name: string;
 }
 
-interface NodeData{
-  id: number;
-  type: string;
-  fields: Array<Field>;
+export interface NodeData
+{
+    id: number;
+    type: string;
+    fields: Array<Field>;
 }
 
-interface NodeView{
-  viewId: number;
-  nodeId: number;
-  name: string;
-  position: { x: number, y: number };
-  address: number;
+export interface ViewPosition
+{
+    x: number;
+    y: number;
 }
 
-export { Field, NodeData, NodeView };
+export interface NodeView
+{
+    viewId: number;
+    nodeId: number;
+    name: string;
+    position: ViewPosition;
+    address: number;
+}

@@ -114,7 +114,7 @@
     },
     "whitespace": {
       "options": [
-        "check-branch",
+//        "check-branch",
         "check-decl",
         "check-operator",
         "check-separator",
