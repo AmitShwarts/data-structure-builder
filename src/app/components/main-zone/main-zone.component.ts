@@ -10,7 +10,6 @@ import { NodeView, ViewPosition } from '../../../assets/types';
 export class MainZoneComponent implements OnInit, DoCheck
 {
   public readonly viewsArray: ReadonlyArray<NodeView>;
-  private getAllViewsState = { time: 100, toggle: true };
 
   constructor(public vService: ViewService)
   {

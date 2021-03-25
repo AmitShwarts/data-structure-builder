@@ -10,23 +10,27 @@ import { ParseToolComponent } from './components/parse-tool/parse-tool.component
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatButtonModule } from '@angular/material/button';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainZoneComponent,
-    MenuComponent,
-    ToolsAreaComponent,
-    ParseToolComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    DragDropModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        MainZoneComponent,
+        MenuComponent,
+        ToolsAreaComponent,
+        ParseToolComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        DragDropModule,
+        MatButtonModule,
+        NoopAnimationsModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule{}

@@ -22,40 +22,42 @@
 .view-node-wrapper
 {
   width: 180px;
-  height: 65px;
+  height: 85px;
 
+  padding: 0 10px 0 10px;
   position: absolute;
   cursor: move;
   user-select: none;
 
-  background-color: styles.$primary-color;
-  border: 1px black solid;
+  background-color: styles.$secondary-color;
+  color: black;
 
   .view-node-top
   {
+    position: relative;
+    bottom: 5px;
     display: grid;
     grid-template-columns: auto auto;
     grid-template-areas: 'address options';
     justify-content: space-between;
 
+    vertical-align: top;
+    height: 35%;
+
     .address
     {
       grid-area: address;
-      margin: 2px 0 0 5px;
 
-      color: styles.$secondary-color;
       font-size: small;
       font-family: 'Consolas', serif;
     }
 
     .view-node-options-btn
     {
-      margin-right: 5px;
       grid-area: options;
       width: fit-content;
 
       text-align: right;
-      color: styles.$secondary-color;
       font-weight: bold;
 
       cursor: pointer;
@@ -64,7 +66,8 @@
 
   .title
   {
-    color: styles.$secondary-color;
+    position: relative;
+    bottom: 7px;
     font-weight: bolder;
     font-size: x-large;
     text-align: center;
