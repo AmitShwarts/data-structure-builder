@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatButtonModule } from '@angular/material/button';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
     declarations: [
@@ -28,9 +29,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
         HttpClientModule,
         DragDropModule,
         MatButtonModule,
-        NoopAnimationsModule
+        NoopAnimationsModule,
+        MatMenuModule
     ],
     providers: [],
     bootstrap: [AppComponent]
 })
-export class AppModule{}
+export class AppModule { }
