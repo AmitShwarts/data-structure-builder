@@ -1,28 +1,25 @@
 import { Injectable } from '@angular/core';
 import { NodeView, ViewPosition } from '../../../assets/types';
+import { GraphService } from '../graph-service/graph.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ViewService
-{
+export class ViewService {
   private readonly r_Items: Array<NodeView>;
   private m_CounterId: number;
 
-  constructor()
-  {
+  constructor(private m_graph: GraphService) {
     this.r_Items = new Array();
     this.m_CounterId = 0;
   }
 
-  getAll(): ReadonlyArray<NodeView>
-  {
-    console.log('ViewService.getAll()');
+  public GetAll(): ReadonlyArray<NodeView> {
+    console.log('ViewService.GetAll()');
     return this.r_Items;
   }
-  add(nodeTypeId: number, nodeTypeName: string): void
-  {
-    console.log(`ViewService.add(${nodeTypeId}, ${nodeTypeName})`);
+  public AddView(nodeTypeId: number, nodeTypeName: string): void {
+    console.log(`ViewService.AddView(${nodeTypeId}, ${nodeTypeName})`);
 
     const item: NodeView = {
       viewId: this.m_CounterId,
@@ -33,21 +30,24 @@ export class ViewService
     };
     this.m_CounterId++;
     this.r_Items.push(item);
+    this.m_graph.AddVertex(item);
   }
-  update(itemId: number, distance: ViewPosition): ViewPosition
-  {
-    console.log(`ViewService.update(${itemId}, ${distance})`);
+  public UpdatePosition(itemId: number, distance: ViewPosition): ViewPosition {
+    console.log(`ViewService.UpdatePosition(${itemId}, ${distance})`);
 
     const index = this.r_Items.findIndex(item => item.viewId === itemId);
     this.r_Items[index].position.x += distance.x;
     this.r_Items[index].position.y += distance.y;
+
     return this.r_Items[index].position;
   }
-  delete(itemId: number): void
-  {
-    console.log(`ViewService.delete(${itemId})`);
+  public DeleteView(itemId: number): void {
+    console.log(`ViewService.DeleteView(${itemId})`);
 
     const index = this.r_Items.findIndex(item => item.viewId === itemId);
+    if (index === -1) { return; }
+
+    this.m_graph.RemoveVertex(this.r_Items[index]);
     this.r_Items.splice(index, 1);
   }
 }

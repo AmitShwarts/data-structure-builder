@@ -1,42 +1,51 @@
 export class Vertex<T>
 {
-    protected readonly r_VertexId: number;
+    protected static s_CounterId = 0;
+    protected readonly r_Id: number;
     protected readonly m_ObjRef: T;
 
-    constructor(vertexId: number, obj: T)
-    {
-        this.r_VertexId = vertexId;
+    constructor(obj: T) {
+        console.log(Vertex.s_CounterId, 'Vertex constructor');
+
+        this.r_Id = Vertex.s_CounterId++;
         this.m_ObjRef = obj;
     }
-    public Equal(other: Vertex<T>): boolean
-    {
-        return this.r_VertexId === other.r_VertexId;
+    public Equal(other: Vertex<T>): boolean {
+        return this.r_Id === other.r_Id;
     }
-    public Compare(other: Vertex<T>): number
-    {
-        return this.r_VertexId - other.r_VertexId;
+    public Compare(other: Vertex<T>): number {
+        return this.r_Id - other.r_Id;
     }
     public GetRef = (): T => this.m_ObjRef;
+    public ToString = (): string => `{Vertex ${this.r_Id}}`;
 }
 
-export class Adjacencies<T> extends Vertex<T>
+export class Adjacencies<T>
 {
-    protected readonly r_adjacency: Set<Vertex<T>>;
+    protected static s_CounterId = 0;
+    protected readonly r_Id: number;
+    protected readonly r_Vertex: Vertex<T>;
+    protected readonly r_Adjacency: Set<Vertex<T>>;
 
-    constructor(vertexId: number, obj: T)
-    {
-        super(vertexId, obj);
-        this.r_adjacency = new Set();
+    constructor(vertex: Vertex<T>) {
+        console.log(Adjacencies.s_CounterId, 'Adjacencies.constructor');
+
+        this.r_Id = Adjacencies.s_CounterId++;
+        this.r_Vertex = vertex;
+        this.r_Adjacency = new Set();
     }
-    AddNeighbor(i_Vertex: Vertex<T>): void
-    {
-        this.r_adjacency.add(i_Vertex);
+    public GetVertex = (): Vertex<T> => this.r_Vertex;
+    public AddNeighbor(i_Vertex: Vertex<T>): void {
+        console.log(this.r_Id, 'Adjacencies.AddNeigbor');
+
+        this.r_Adjacency.add(i_Vertex);
     }
-    RemoveNeighbor(i_Vertex: Vertex<T>): void
-    {
-        if (this.r_adjacency.has(i_Vertex))
-        {
-            this.r_adjacency.delete(i_Vertex);
+    public RemoveNeighbor(i_Vertex: Vertex<T>): void {
+        console.log(this.r_Id, 'Adjacencies.RemoveNeigbor');
+
+        if (this.r_Adjacency.has(i_Vertex)) {
+            console.log(`-> removed ${i_Vertex.ToString} from ${this.r_Vertex.ToString}`);
+            this.r_Adjacency.delete(i_Vertex);
         }
     }
 }
