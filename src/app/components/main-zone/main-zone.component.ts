@@ -7,24 +7,20 @@ import { NodeView, ViewPosition } from '../../../assets/types';
   templateUrl: './main-zone.component.html',
   styleUrls: ['./main-zone.component.scss']
 })
-export class MainZoneComponent implements OnInit, DoCheck
-{
+export class MainZoneComponent implements OnInit, DoCheck {
   public readonly viewsArray: ReadonlyArray<NodeView>;
 
-  constructor(public vService: ViewService)
-  {
-    this.viewsArray = this.vService.getAll();
+  constructor(public vService: ViewService) {
+    this.viewsArray = this.vService.GetAll();
   }
 
-  ngOnInit(): void{}
-  ngDoCheck(): void{}
+  ngOnInit(): void { }
+  ngDoCheck(): void { }
 
-  drop(viewId: number, distance: ViewPosition): void
-  {
-    this.vService.update(viewId, distance);
+  drop(viewId: number, distance: ViewPosition): void {
+    this.vService.UpdatePosition(viewId, distance);
   }
-  deleteView(viewId: number): void
-  {
-    this.vService.delete(viewId);
+  deleteView(viewId: number): void {
+    this.vService.DeleteView(viewId);
   }
 }

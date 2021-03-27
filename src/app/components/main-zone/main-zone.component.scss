@@ -30,6 +30,7 @@
   user-select: none;
 
   background-color: styles.$secondary-color;
+  border: 1px rgba(0, 0, 0, 0.07) solid;
   color: black;
 
   .view-node-top
@@ -56,9 +57,14 @@
     {
       grid-area: options;
       width: fit-content;
+      height: 60%;
+      margin-top: 7px;
 
       text-align: right;
       font-weight: bold;
+    
+      border: none;
+      background-color: transparent;
 
       cursor: pointer;
     }
