@@ -22,16 +22,7 @@ export class MainZoneComponent implements OnInit, DoCheck {
   public ConnectNeigbors(i_ViewId: string): void {
     const numberViewId = parseInt(i_ViewId, 10);
 
-    const subsArray = this.m_views.map(view => {
-      return view.ObserveClicks().subscribe(observer => {
-        if (numberViewId !== observer.viewId) {
-          this.m_vService.ConnectNeighbors(this.r_ViewsArray[numberViewId], observer);
-        }
-      });
-    });
     const unSubsriberFunc = (): void => subsArray.forEach(sub => sub.unsubscribe());
-    const timeout = setTimeout(unSubsriberFunc, 3000);
-
     const snackBar = this.m_snackBar.open('Click on the desired neighbor.', 'Cancel', {
       duration: 3000,
       verticalPosition: 'top'
@@ -42,5 +33,17 @@ export class MainZoneComponent implements OnInit, DoCheck {
       clearTimeout(timeout);
       unSubsriberFunc();
     });
+
+    const subsArray = this.m_views.map(view => {
+      return view.ObserveClicks().subscribe(observer => {
+        if (numberViewId !== observer.viewId) {
+          this.m_vService.ConnectNeighbors(this.r_ViewsArray[numberViewId], observer);
+          snackBar.dismiss();
+          unSubsriberFunc();
+        }
+      });
+    });
+
+    const timeout = setTimeout(unSubsriberFunc, 3000);
   }
 }

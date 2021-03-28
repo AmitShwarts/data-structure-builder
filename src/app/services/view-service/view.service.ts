@@ -52,5 +52,6 @@ export class ViewService {
   }
   public ConnectNeighbors(i_view1: NodeView, i_view2: NodeView): void {
     console.log(`ViewService.ConnectNeighbors(${i_view1.viewId}, ${i_view2.viewId})`);
+    this.m_graph.ConnectNeigbors(i_view1, i_view2);
   }
 }
