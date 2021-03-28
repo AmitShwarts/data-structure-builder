@@ -27,12 +27,14 @@ export class GraphService {
     if (!this.r_ViewMap.has(i_NewView)) {
       const newVertex = new Vertex<NodeView>(i_NewView);
       const newAdjacency = new Adjacencies<NodeView>(newVertex);
+
       this.r_ViewMap.set(i_NewView, { first: newVertex, second: newAdjacency });
     }
   }
   public RemoveVertex(i_View: NodeView): void {
     console.log(`GraphService.RemoveVertex(${i_View.name}, ${i_View.viewId})`);
     const pairRef = this.r_ViewMap.get(i_View);
+
     if (pairRef === undefined) { return; }
 
     for (const pair of this.r_ViewMap.values()) {

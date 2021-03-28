@@ -1,7 +1,6 @@
 <div class="btn-area">
-  <button mat-raised-button mat-button *ngFor="let struct of types"
-          id="{{struct.id}}_struct"
-          (click)="addViewOnClick(struct.id, struct.type)">
+  <button mat-raised-button mat-button *ngFor="let struct of m_Types" id="{{struct.id}}_struct"
+    (click)="AddViewOnClick(struct.id, struct.type)">
     {{struct.type}}
   </button>
 </div>

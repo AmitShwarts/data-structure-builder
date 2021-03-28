@@ -6,22 +6,17 @@ import { ActivationStart, Router } from '@angular/router';
     templateUrl: './menu.component.html',
     styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements AfterContentChecked
-{
-    public title: string;
+export class MenuComponent implements AfterContentChecked {
+    public m_Title: string;
 
-    constructor(public route: Router)
-    {
-        this.title = String();
+    constructor(public route: Router) {
+        this.m_Title = String();
     }
 
-    ngAfterContentChecked(): void
-    {
-        this.route.events.subscribe(data =>
-        {
-            if(data instanceof ActivationStart)
-            {
-                this.title = data.snapshot.data.title;
+    ngAfterContentChecked(): void {
+        this.route.events.subscribe(data => {
+            if (data instanceof ActivationStart) {
+                this.m_Title = data.snapshot.data.title;
             }
         });
     }

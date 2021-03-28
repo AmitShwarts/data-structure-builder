@@ -13,6 +13,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatButtonModule } from '@angular/material/button';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
+import { ViewNodeComponent } from './components/view-node/view-node.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
     declarations: [
@@ -20,7 +22,8 @@ import { MatMenuModule } from '@angular/material/menu';
         MainZoneComponent,
         MenuComponent,
         ToolsAreaComponent,
-        ParseToolComponent
+        ParseToolComponent,
+        ViewNodeComponent
     ],
     imports: [
         BrowserModule,
@@ -30,7 +33,8 @@ import { MatMenuModule } from '@angular/material/menu';
         DragDropModule,
         MatButtonModule,
         NoopAnimationsModule,
-        MatMenuModule
+        MatMenuModule,
+        MatSnackBarModule
     ],
     providers: [],
     bootstrap: [AppComponent]

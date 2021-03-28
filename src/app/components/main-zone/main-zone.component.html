@@ -1,32 +1,7 @@
 <div class="main">
   <h2>Main Zone</h2>
   <div class="views-area">
-    <button mat-button class="view-node-wrapper" *ngFor="let view of viewsArray" cdkDragBoundary=".views-area" cdkDrag
-      [cdkDragFreeDragPosition]="view.position" (cdkDragEnded)="drop(view.viewId, $event.distance)"
-      id="{{view.viewId}}}">
-      <span class="view-node-top">
-        <span class="address">0x{{view.address.toString(16)}}</span>
-        <button class="view-node-options-btn" [matMenuTriggerFor]="menu">&#8801;</button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="deleteView(view.viewId)">Delete</button>
-          <button mat-menu-item>Connect neighbors</button>
-          <button mat-menu-item>Disconnect neighbors</button>
-        </mat-menu>
-      </span>
-      <span class="title">{{view.name}}</span>
-    </button>
-
-    <!-- <button mat-raised-button mat-button class="view-node-wrapper">
-      <span class="view-node-top">
-        <span class="address">0x0000000</span>
-        <button class="view-node-options-btn" [matMenuTriggerFor]="menu">&#8801;</button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>Delete</button>
-          <button mat-menu-item>Connect neighbors</button>
-          <button mat-menu-item>Disconnect neighbors</button>
-        </mat-menu>
-      </span>
-      <span class="title">Stack</span>
-    </button> -->
+    <app-view-node #view *ngFor="let view of r_ViewsArray" [view]=view
+      (ConnectNeighborsEvent)="ConnectNeigbors($event)"></app-view-node>
   </div>
 </div>

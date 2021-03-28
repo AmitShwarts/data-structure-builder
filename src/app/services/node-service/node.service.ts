@@ -6,17 +6,14 @@ import { NodeData } from '../../../assets/types';
 @Injectable({
     providedIn: 'root'
 })
-export class NodeService
-{
-    private readonly url: string;
+export class NodeService {
+    private readonly i_Url: string;
 
-    constructor(private db: HttpClient)
-    {
-        this.url = '../assets/nodes.json';
+    constructor(private db: HttpClient) {
+        this.i_Url = '../assets/nodes.json';
     }
 
-    getData(): Observable<Array<NodeData>>
-    {
-        return this.db.get<Array<NodeData>>(this.url);
+    public GetData(): Observable<Array<NodeData>> {
+        return this.db.get<Array<NodeData>>(this.i_Url);
     }
 }

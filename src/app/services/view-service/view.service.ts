@@ -18,13 +18,13 @@ export class ViewService {
     console.log('ViewService.GetAll()');
     return this.r_Items;
   }
-  public AddView(nodeTypeId: number, nodeTypeName: string): void {
-    console.log(`ViewService.AddView(${nodeTypeId}, ${nodeTypeName})`);
+  public AddView(i_NodeTypeId: number, i_NodeTypeName: string): void {
+    console.log(`ViewService.AddView(${i_NodeTypeId}, ${i_NodeTypeName})`);
 
     const item: NodeView = {
       viewId: this.m_CounterId,
-      nodeId: nodeTypeId,
-      name: nodeTypeName,
+      nodeId: i_NodeTypeId,
+      name: i_NodeTypeName,
       position: { x: 0, y: 0 },
       address: (this.m_CounterId + 1) * 1000
     };
@@ -32,22 +32,25 @@ export class ViewService {
     this.r_Items.push(item);
     this.m_graph.AddVertex(item);
   }
-  public UpdatePosition(itemId: number, distance: ViewPosition): ViewPosition {
-    console.log(`ViewService.UpdatePosition(${itemId}, ${distance})`);
+  public UpdatePosition(i_ItemId: number, i_Distance: ViewPosition): ViewPosition {
+    console.log(`ViewService.UpdatePosition(${i_ItemId}, ${i_Distance})`);
 
-    const index = this.r_Items.findIndex(item => item.viewId === itemId);
-    this.r_Items[index].position.x += distance.x;
-    this.r_Items[index].position.y += distance.y;
+    const index = this.r_Items.findIndex(item => item.viewId === i_ItemId);
+    this.r_Items[index].position.x += i_Distance.x;
+    this.r_Items[index].position.y += i_Distance.y;
 
     return this.r_Items[index].position;
   }
-  public DeleteView(itemId: number): void {
-    console.log(`ViewService.DeleteView(${itemId})`);
+  public DeleteView(i_ItemId: number): void {
+    console.log(`ViewService.DeleteView(${i_ItemId})`);
 
-    const index = this.r_Items.findIndex(item => item.viewId === itemId);
+    const index = this.r_Items.findIndex(item => item.viewId === i_ItemId);
     if (index === -1) { return; }
 
     this.m_graph.RemoveVertex(this.r_Items[index]);
     this.r_Items.splice(index, 1);
+  }
+  public ConnectNeighbors(i_view1: NodeView, i_view2: NodeView): void {
+    console.log(`ViewService.ConnectNeighbors(${i_view1.viewId}, ${i_view2.viewId})`);
   }
 }

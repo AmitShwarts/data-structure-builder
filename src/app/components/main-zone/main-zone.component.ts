@@ -1,6 +1,8 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { ViewService } from '../../services/view-service/view.service';
-import { NodeView, ViewPosition } from '../../../assets/types';
+import { NodeView } from '../../../assets/types';
+import { ViewNodeComponent } from '../view-node/view-node.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-main-zone',
@@ -8,19 +10,37 @@ import { NodeView, ViewPosition } from '../../../assets/types';
   styleUrls: ['./main-zone.component.scss']
 })
 export class MainZoneComponent implements OnInit, DoCheck {
-  public readonly viewsArray: ReadonlyArray<NodeView>;
+  public readonly r_ViewsArray: ReadonlyArray<NodeView>;
+  @ViewChildren(ViewNodeComponent) m_views!: QueryList<ViewNodeComponent>;
 
-  constructor(public vService: ViewService) {
-    this.viewsArray = this.vService.GetAll();
+  constructor(private m_vService: ViewService, private m_snackBar: MatSnackBar) {
+    this.r_ViewsArray = this.m_vService.GetAll();
   }
 
   ngOnInit(): void { }
   ngDoCheck(): void { }
+  public ConnectNeigbors(i_ViewId: string): void {
+    const numberViewId = parseInt(i_ViewId, 10);
 
-  drop(viewId: number, distance: ViewPosition): void {
-    this.vService.UpdatePosition(viewId, distance);
-  }
-  deleteView(viewId: number): void {
-    this.vService.DeleteView(viewId);
+    const subsArray = this.m_views.map(view => {
+      return view.ObserveClicks().subscribe(observer => {
+        if (numberViewId !== observer.viewId) {
+          this.m_vService.ConnectNeighbors(this.r_ViewsArray[numberViewId], observer);
+        }
+      });
+    });
+    const unSubsriberFunc = (): void => subsArray.forEach(sub => sub.unsubscribe());
+    const timeout = setTimeout(unSubsriberFunc, 3000);
+
+    const snackBar = this.m_snackBar.open('Click on the desired neighbor.', 'Cancel', {
+      duration: 3000,
+      verticalPosition: 'top'
+    });
+
+    snackBar.onAction().subscribe(observer => {
+      snackBar.dismiss();
+      clearTimeout(timeout);
+      unSubsriberFunc();
+    });
   }
 }

@@ -10,21 +10,21 @@ import { Router } from '@angular/router';
     styleUrls: ['./tools-area.component.scss']
 })
 export class ToolsAreaComponent implements OnInit {
-    types: Array<NodeData>;
+    public m_Types: Array<NodeData>;
 
     constructor(
         private nodeService: NodeService,
         private vService: ViewService,
         public route: Router
     ) {
-        this.types = new Array();
+        this.m_Types = new Array();
     }
 
     ngOnInit(): void {
-        this.nodeService.getData().subscribe(data => this.types = data);
+        this.nodeService.GetData().subscribe(data => this.m_Types = data);
     }
 
-    addViewOnClick(nodeId: number, nodeName: string): void {
-        this.vService.AddView(nodeId, nodeName);
+    public AddViewOnClick(i_NodeId: number, i_NodeName: string): void {
+        this.vService.AddView(i_NodeId, i_NodeName);
     }
 }
